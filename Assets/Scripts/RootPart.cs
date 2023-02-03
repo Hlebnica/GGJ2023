@@ -22,8 +22,10 @@ public class RootPart : MonoBehaviour
 
     public Vector3? savedAnchor = null;
 
-    
-    
+    public static bool grab = false;
+    public GameObject grabber;
+
+
     public void LinkObject(Collider obj, Vector3? newAnchor)
     {
         UnlinkObject();
@@ -48,7 +50,7 @@ public class RootPart : MonoBehaviour
 
     public void UnlinkObject()
     {
-        Debug.Log("UNLINK " + (linkJoint != null) + " " + name);
+        // Debug.Log("UNLINK " + (linkJoint != null) + " " + name);
         if (linkJoint != null)
         {
             savedAnchor = null;
@@ -62,6 +64,7 @@ public class RootPart : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
+        if (!grab) return;
         if (linkJoint != null) return;
         if (collision.CompareTag("Clawable"))
             LinkObject(collision, null);
@@ -83,6 +86,7 @@ public class RootPart : MonoBehaviour
         var nextPartRootPart = nextPart.GetComponent<RootPart>();
         next = nextPartRootPart;
         next.prev = this;
+        next.grabber = grabber;
         nextPartRootPart.id = id + 1;
 
         return nextPartRootPart;
@@ -97,6 +101,17 @@ public class RootPart : MonoBehaviour
 
     void Update()
     {
+        if (!grab && linkedObject!=null) UnlinkObject();
+        
+        if (next==null && prev!=null)
+        {
+            grabber.transform.position = pointer.transform.position;
+            if(linkedObject==null)
+                grabber.transform.rotation = pointer.transform.rotation;
+            else
+                grabber.transform.rotation = Quaternion.LookRotation(linkedObject.transform.position-transform.position);
+        }
+
         if (_collider != null)
             _collider.isTrigger = next == null;
 

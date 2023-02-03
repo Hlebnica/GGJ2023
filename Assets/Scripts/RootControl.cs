@@ -5,13 +5,26 @@ using UnityEngine;
 public class RootControl : MonoBehaviour
 {
 
+    public GameObject grabber;
     public RootPart baseRootPart;
 
     private Coroutine currentAnimation;
-    public GameObject claw;
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            RootPart.grab = true;
+            grabber.SetActive(true);
+        }
+        
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            RootPart.grab = false;
+            grabber.SetActive(false);
+        }
+        
+        
         if (Input.GetMouseButton(0) && currentAnimation == null)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3619525298445518147}
   - component: {fileID: 5103399360265276073}
   - component: {fileID: 6696795271243379255}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RootBase
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -51,15 +51,14 @@ MonoBehaviour:
   id: 0
   model: {fileID: 2119242115229508841}
   pointer: {fileID: 5219378911308669647}
-  partPrefab: {fileID: 1290353984454741550}
-  isLast: 1
   end: {fileID: 8822824144221415489}
   rb: {fileID: 0}
   _collider: {fileID: 4773258219886207996}
-  joint: {fileID: 6696795271243379255}
   next: {fileID: 0}
   prev: {fileID: 0}
-  nail: {fileID: 0}
+  linkJoint: {fileID: 0}
+  linkedObject: {fileID: 0}
+  grabber: {fileID: 0}
 --- !u!54 &5103399360265276073
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -100,7 +99,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5219378911308669647}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pointer
   m_TagString: Untagged
   m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
@@ -134,7 +133,7 @@ GameObject:
   - component: {fileID: 4762503914031462897}
   - component: {fileID: 7844231195010988629}
   - component: {fileID: 4773258219886207996}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RootPart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,7 +228,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8822824144221415489}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: end
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -260,7 +259,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2119242115229508841}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
