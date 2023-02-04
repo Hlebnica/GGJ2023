@@ -22,7 +22,7 @@ public class IsoCamera : MonoBehaviour
     private void Update()
     {
         Vector3 mouseAdd = Vector3.zero;
-        
+
         if (Input.GetMouseButton(2))
         {
             var rot2 = target.transform.rotation;
@@ -30,22 +30,22 @@ public class IsoCamera : MonoBehaviour
             mouseAdd = new Vector3(-delta.y, -delta.x, 0);
             // target.transform.rotation = rot2;
         }
-        
+
         _camera.transform.rotation = Quaternion.LookRotation(target.position - transform.position);
 
         var rot = target.transform.rotation;
         var angles = rot.eulerAngles;
-        var addVertical = Vector3.right * (Input.GetAxis("Vertical") * Time.deltaTime * 40+mouseAdd.x);
-        var addHorizontal = Vector3.down * (Input.GetAxis("Horizontal") * Time.deltaTime * 80 +mouseAdd.y);
+        var addVertical = Vector3.right * (Input.GetAxis("Vertical") * Time.deltaTime * 40 + mouseAdd.x);
+        var addHorizontal = Vector3.down * (Input.GetAxis("Horizontal") * Time.deltaTime * 80 + mouseAdd.y);
         var test = (angles + addVertical).x;
         if (test > 180) test -= 360;
         if (test > 1 && test < 60)
             rot.eulerAngles += addVertical;
         rot.eulerAngles += addHorizontal;
         target.transform.rotation = rot;
-        _camera.orthographicSize += Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime * -200;
+        _camera.orthographicSize =
+            Mathf.Clamp(_camera.orthographicSize + Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime * -300, 4, 14);
 
- 
 
         oldMousePos = Input.mousePosition;
     }
