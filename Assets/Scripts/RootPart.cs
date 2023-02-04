@@ -129,7 +129,7 @@ public class RootPart : MonoBehaviour
         if (linkJoint != null)
         {
             // Debug.Log(model.transform.localScale.x);
-            linkJoint.connectedAnchor =  savedAnchor.Value - (pointer.position - transform.position);
+            //linkJoint.connectedAnchor = savedAnchor.Value - transform.rotation * Vector3.forward;// - (pointer.position - transform.position);
             // (Vector3.back * model.transform.localScale.z);
         }
     }
