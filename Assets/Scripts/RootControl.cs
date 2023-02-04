@@ -32,7 +32,7 @@ public class RootControl : MonoBehaviour
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         var pointForcer = GetClosestPoint(ray, RootPart.lastRootPart.end.transform.position);
-        RootPart.lastRootPart.rb.AddForce(pointForcer.normalized * 2, ForceMode.Acceleration);
+        RootPart.lastRootPart.rb.AddForce(pointForcer.normalized * 5, ForceMode.Acceleration);
 
         if (Input.GetMouseButton(0) && currentAnimation == null)
         {

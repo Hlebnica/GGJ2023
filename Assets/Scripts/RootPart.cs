@@ -63,12 +63,12 @@ public class RootPart : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if (!grab) return;
         if (linkJoint != null) return;
-        if (collision.CompareTag("Clawable"))
-            LinkObject(collision, null);
+        if (collision.collider.CompareTag("Clawable"))
+            LinkObject(collision.collider, null);
     }
 
 
@@ -115,20 +115,21 @@ public class RootPart : MonoBehaviour
         if (next == null && prev != null)
         {
             grabber.transform.position = pointer.transform.position;
-            if (linkedObject == null)
-                grabber.transform.rotation = pointer.transform.rotation;
-            else
-                grabber.transform.rotation =
-                    Quaternion.LookRotation(linkedObject.transform.position - transform.position);
+            grabber.transform.rotation = pointer.transform.rotation;
+            // if (linkedObject == null)
+            //     
+            // else
+            //     grabber.transform.rotation =
+            //         Quaternion.LookRotation(linkedObject.transform.position - transform.position);
         }
 
-        if (_collider != null)
-            _collider.isTrigger = next == null;
+        // if (_collider != null)
+        //     _collider.isTrigger = next == null;
 
         if (linkJoint != null)
         {
             // Debug.Log(model.transform.localScale.x);
-            linkJoint.connectedAnchor = savedAnchor.Value - (pointer.position - transform.position);
+            linkJoint.connectedAnchor =  savedAnchor.Value - (pointer.position - transform.position);
             // (Vector3.back * model.transform.localScale.z);
         }
     }
