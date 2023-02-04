@@ -763,7 +763,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -1306,8 +1306,12 @@ PrefabInstance:
       value: Untitled.001
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: 5e1ec6243aa181b4ba21b472d6b1c78d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 5e1ec6243aa181b4ba21b472d6b1c78d, type: 3}
       propertyPath: m_TagString
-      value: Clawable
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e1ec6243aa181b4ba21b472d6b1c78d, type: 3}
@@ -1618,11 +1622,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1703bb90a1400f04899dcf0765819b30, type: 3}
       propertyPath: m_TagString
-      value: Clawable
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: 1703bb90a1400f04899dcf0765819b30, type: 3}
       propertyPath: m_TagString
-      value: Clawable
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1703bb90a1400f04899dcf0765819b30, type: 3}
@@ -2767,7 +2771,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93b1562e083846a38d9b7b7d8f440f35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hooll: {fileID: 432946329}
   bridge: {fileID: 1743285481}
+  BarrelCollider: {fileID: 1170768550}
 --- !u!1001 &930633105
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3192,11 +3198,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ac4429e93b0f4774dac8d9b099e0f7af, type: 3}
       propertyPath: m_TagString
-      value: Clawable
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: ac4429e93b0f4774dac8d9b099e0f7af, type: 3}
       propertyPath: m_TagString
-      value: Clawable
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac4429e93b0f4774dac8d9b099e0f7af, type: 3}
@@ -6187,7 +6193,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0

@@ -42,13 +42,13 @@ public class Logic : MonoBehaviour
             foreach (var r in rot)
             {
                 var rr=r.rotation;
-                rr.eulerAngles = Vector3.right * Time.time * 40;
+                rr.eulerAngles+= Vector3.right*Time.time * 40;
                 r.rotation = rr;
             }
             foreach (var r in arot)
             {
                 var rr=r.rotation;
-                rr.eulerAngles = Vector3.right * Time.time * -40;
+                rr.eulerAngles+= Vector3.right*Time.time * -40;
                 r.rotation = rr;
             }
             
