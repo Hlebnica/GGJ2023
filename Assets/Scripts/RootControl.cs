@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class RootControl : MonoBehaviour
 {
+    Vector3 GetClosestPoint(Ray ray, Vector3 point)
+    {
+        return ray.origin + Vector3.Project(point - ray.origin, ray.direction);
+    }
+
 
     public GameObject grabber;
     public RootPart baseRootPart;
@@ -17,17 +22,22 @@ public class RootControl : MonoBehaviour
             RootPart.grab = true;
             grabber.SetActive(true);
         }
-        
+
         if (Input.GetKeyUp(KeyCode.Space))
         {
             RootPart.grab = false;
             grabber.SetActive(false);
         }
-        
+
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        var pointForcer = GetClosestPoint(ray, RootPart.lastRootPart.end.transform.position);
+        RootPart.lastRootPart.rb.AddForce(pointForcer.normalized*2);
         
         if (Input.GetMouseButton(0) && currentAnimation == null)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            
+            
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100))
             {
@@ -49,7 +59,7 @@ public class RootControl : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButton(1) && currentAnimation == null)
+        if (Input.GetMouseButton(1) && currentAnimation == null && baseRootPart.next!=null)
         {
             var part = baseRootPart;
             while (part.next != null)
@@ -57,7 +67,7 @@ public class RootControl : MonoBehaviour
                 part = part.next;
             }
 
-            currentAnimation = StartCoroutine(DeflationAnim(part, 0.3f, 5));
+            currentAnimation = StartCoroutine(DeflationAnim(part, 0.3f, 10));
         }
     }
 
@@ -131,7 +141,7 @@ public class RootControl : MonoBehaviour
 
         var lastyObj = lastPart.linkedObject;
         var lastyAnchor = lastPart.savedAnchor;
-        
+
         lastPart.UnlinkObject();
         if (lastyObj != null)
             lastPart.prev.LinkObject(lastyObj, lastyAnchor);

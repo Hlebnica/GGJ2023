@@ -25,13 +25,14 @@ public class RootPart : MonoBehaviour
     public static bool grab = false;
     public GameObject grabber;
 
+    public static RootPart lastRootPart;
 
     public void LinkObject(Collider obj, Vector3? newAnchor)
     {
         UnlinkObject();
-        Debug.Log("LINK " + (linkJoint != null) + " " + name);
+        // Debug.Log("LINK " + (linkJoint != null) + " " + name);
         var joint = gameObject.AddComponent<FixedJoint>();
-        joint.massScale = 2;
+        joint.massScale = 0.1f;
 
         joint.connectedBody = obj.attachedRigidbody;
         joint.autoConfigureConnectedAnchor = false;
@@ -73,6 +74,7 @@ public class RootPart : MonoBehaviour
 
     private void Start()
     {
+        if (prev == null) lastRootPart = this;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -89,27 +91,30 @@ public class RootPart : MonoBehaviour
         next.grabber = grabber;
         nextPartRootPart.id = id + 1;
 
+        lastRootPart = nextPartRootPart;
         return nextPartRootPart;
     }
 
 
     private void OnDestroy()
     {
+        lastRootPart = prev;
         if (next != null) next.prev = null;
         if (prev != null) prev.next = null;
     }
 
     void Update()
     {
-        if (!grab && linkedObject!=null) UnlinkObject();
-        
-        if (next==null && prev!=null)
+        if (!grab && linkedObject != null) UnlinkObject();
+
+        if (next == null && prev != null)
         {
             grabber.transform.position = pointer.transform.position;
-            if(linkedObject==null)
+            if (linkedObject == null)
                 grabber.transform.rotation = pointer.transform.rotation;
             else
-                grabber.transform.rotation = Quaternion.LookRotation(linkedObject.transform.position-transform.position);
+                grabber.transform.rotation =
+                    Quaternion.LookRotation(linkedObject.transform.position - transform.position);
         }
 
         if (_collider != null)
@@ -117,7 +122,9 @@ public class RootPart : MonoBehaviour
 
         if (linkJoint != null)
         {
-            linkJoint.connectedAnchor = savedAnchor.Value - (pointer.position - transform.position);
+            // Debug.Log(model.transform.localScale.x);
+            linkJoint.connectedAnchor = savedAnchor.Value-(pointer.position - transform.position);
+            // (Vector3.back * model.transform.localScale.z);
         }
     }
 }
