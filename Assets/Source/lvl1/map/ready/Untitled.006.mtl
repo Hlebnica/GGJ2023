@@ -1,0 +1,12 @@
+# Blender 3.4.1 MTL File: 'lvl1.blend'
+# www.blender.org
+
+newmtl palette.006
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd F:/user/Documents/GGJ/GGJ2023/Assets/Source/lvl1/map/export/lvl1-6.png
