@@ -16,7 +16,9 @@ public class HollerMeat : MonoBehaviour
     public GameObject dino;
 
     public GameObject dineHoller;
+    
     public Transform toPlace;
+    public GameObject dinodino;
 
 
     private void OnTriggerEnter(Collider other)
@@ -34,10 +36,25 @@ public class HollerMeat : MonoBehaviour
             done = true;
             Destroy(GetComponent<BoxCollider>());
             // var rb = other.attachedRigidbody;
-            dino.transform.position = toPlace.position;
-            Debug.LogError(toPlace.position);
-            dino.transform.rotation = toPlace.rotation;
+            // dino.transform.position = toPlace.position;
+            // Debug.LogError(toPlace.position);
+            StartCoroutine(Anim());
+            dinodino.transform.rotation = toPlace.rotation;
 
+        }
+    }
+
+    IEnumerator Anim()
+    {
+        var startTime = Time.time;
+
+        var start = dinodino.transform.position; 
+        while (startTime + 1 > Time.time)
+        {
+
+            dinodino.transform.position = Vector3.Lerp(start, toPlace.position, Time.time - startTime);
+            
+            yield return null;
         }
     }
 }

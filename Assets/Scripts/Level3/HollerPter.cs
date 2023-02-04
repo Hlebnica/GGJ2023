@@ -45,8 +45,6 @@ public class HollerPter : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("ENTER "+other.transform.parent.gameObject.name);
-        Debug.Log("KEK "+target.gameObject.name);
         if (other.transform.parent.gameObject.name == target.gameObject.name && !done && stikHOller.done)
         {
             

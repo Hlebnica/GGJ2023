@@ -38,10 +38,8 @@ public class HollerCrystal : MonoBehaviour
     IEnumerator FlyAnim()
     {
         float startTime = Time.time;
-        Debug.Log("START");
         while (startTime+3  > Time.time)
         {
-            Debug.Log("!!!!!!!!@#");
             foreach (var bat in bats)
             {
                 var pos = bat.transform.position;
