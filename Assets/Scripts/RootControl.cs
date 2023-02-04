@@ -39,6 +39,7 @@ public class RootControl : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100))
             {
+                Debug.Log(hit.collider.gameObject.name);
                 var part = baseRootPart;
                 while (part.next != null)
                 {
