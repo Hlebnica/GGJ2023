@@ -81,8 +81,13 @@ public class RootPart : MonoBehaviour
 
     public RootPart CreateNextPart(Vector3 targetPos)
     {
-        var nextPart = Instantiate(BugFix.staticRootPartPrefab);
-        nextPart.transform.rotation = Quaternion.LookRotation(targetPos - transform.position);
+        var diff = targetPos - transform.position;
+        var dot = Vector3.Dot(diff.normalized, transform.rotation * Vector3.forward);
+        // if (dot < 0.5) return null;
+        var nextPart = Instantiate(BugFix.staticRootPartPrefab, transform.parent);
+        nextPart.transform.rotation =
+            Quaternion.LookRotation(diff - Vector3.Project(diff,transform.rotation * Vector3.forward)*(1-Mathf.Max(0, dot)));
+            // Quaternion.LookRotation(Vector3.Lerp(transform.rotation * Vector3.forward, diff, Mathf.Abs(dot)));
         nextPart.transform.position = end.position;
         nextPart.GetComponent<Joint>().connectedBody = rb;
         var nextPartRootPart = nextPart.GetComponent<RootPart>();
@@ -123,7 +128,7 @@ public class RootPart : MonoBehaviour
         if (linkJoint != null)
         {
             // Debug.Log(model.transform.localScale.x);
-            linkJoint.connectedAnchor = savedAnchor.Value-(pointer.position - transform.position);
+            linkJoint.connectedAnchor = savedAnchor.Value - (pointer.position - transform.position);
             // (Vector3.back * model.transform.localScale.z);
         }
     }

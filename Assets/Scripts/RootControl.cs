@@ -32,12 +32,10 @@ public class RootControl : MonoBehaviour
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         var pointForcer = GetClosestPoint(ray, RootPart.lastRootPart.end.transform.position);
-        RootPart.lastRootPart.rb.AddForce(pointForcer.normalized*2);
-        
+        RootPart.lastRootPart.rb.AddForce(pointForcer.normalized * 2, ForceMode.Acceleration);
+
         if (Input.GetMouseButton(0) && currentAnimation == null)
         {
-            
-            
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100))
             {
@@ -50,16 +48,20 @@ public class RootControl : MonoBehaviour
                 var lastObj = part.linkedObject;
                 var lastAnchor = part.savedAnchor;
                 part.UnlinkObject();
-                part = part.CreateNextPart(hit.point); 
-                part.savedAnchor = lastAnchor;
-                if (lastObj != null) part.LinkObject(lastObj, lastAnchor);
+                var p = part.CreateNextPart(hit.point);
+                if (p != null)
+                {
+                    part = p;
+                    part.savedAnchor = lastAnchor;
+                    if (lastObj != null) part.LinkObject(lastObj, lastAnchor);
 
 
-                currentAnimation = StartCoroutine(InflationAnim(part, 0.3f, 5));
+                    currentAnimation = StartCoroutine(InflationAnim(part, 0.3f, 10));
+                }
             }
         }
 
-        if (Input.GetMouseButton(1) && currentAnimation == null && baseRootPart.next!=null)
+        if (Input.GetMouseButton(1) && currentAnimation == null && baseRootPart.next != null)
         {
             var part = baseRootPart;
             while (part.next != null)
