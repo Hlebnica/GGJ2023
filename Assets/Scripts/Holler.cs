@@ -14,8 +14,6 @@ public class Holler : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log("ENTER "+other.transform.parent.gameObject.name);
-        Debug.Log("KEK "+target.gameObject.name);
         if (other.transform.parent.gameObject.name == target.gameObject.name && !done)
         {
             
