@@ -9,6 +9,7 @@ public class Logic : MonoBehaviour
     public Holler b;
     public Holler c;
     public GameObject dim;
+    public GameObject water;
 
     public int s = 0;
 
@@ -37,6 +38,7 @@ public class Logic : MonoBehaviour
                 StartCoroutine(StartAnim.SoundFade(m2, 0, v, 1f));
                 break;
             case 3:
+                water.SetActive(true);
                 StartCoroutine(StartAnim.SoundFade(m2, -1, 0, 1f));
                 StartCoroutine(StartAnim.SoundFade(m3, 0, v, 1f));
                 StartCoroutine(Anim());
