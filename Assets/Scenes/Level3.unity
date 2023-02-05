@@ -1521,6 +1521,10 @@ MonoBehaviour:
       m_Calls: []
   done: 0
   meat: {fileID: 1174287921}
+  dyno_eat: {fileID: 1742654263}
+  dyno_dead: {fileID: 956155723}
+  normal3: {fileID: 1145282390}
+  dyndyn: {fileID: 196053255}
 --- !u!1001 &593645435
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1630,6 +1634,8 @@ MonoBehaviour:
       m_Calls: []
   done: 0
   fire: {fileID: 546827059}
+  m0: {fileID: 1582765115}
+  fire1: {fileID: 1338106256}
 --- !u!65 &612271398
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1662,6 +1668,8 @@ MonoBehaviour:
   done: 0
   fire: {fileID: 1466984296}
   fireHoller: {fileID: 612271397}
+  fire1: {fileID: 1338106256}
+  fire2: {fileID: 433105506}
 --- !u!1 &612630302
 GameObject:
   m_ObjectHideFlags: 0
@@ -2338,7 +2346,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &956155724
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2351,9 +2359,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 07dc0c63883290848bc43815bfce6101, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0
+  m_Volume: 0.2
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -3485,6 +3493,8 @@ MonoBehaviour:
   dineHoller: {fileID: 566182259}
   toPlace: {fileID: 225402436}
   dinodino: {fileID: 196053255}
+  normal2: {fileID: 1093745702}
+  dyno_eat: {fileID: 1742654263}
 --- !u!65 &1174287922
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4610,6 +4620,9 @@ MonoBehaviour:
   pterModel1: {fileID: 1166869610}
   pterModel2: {fileID: 1206786376}
   meatHoller: {fileID: 1174287919}
+  fire2: {fileID: 433105506}
+  pter_dead: {fileID: 1170362619}
+  normal2: {fileID: 1093745702}
 --- !u!65 &1561852441
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4755,7 +4768,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b23d250178d41dd4a8de0c3057d2fc92, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 1
   Mute: 0

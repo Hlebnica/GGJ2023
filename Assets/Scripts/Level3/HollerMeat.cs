@@ -20,6 +20,10 @@ public class HollerMeat : MonoBehaviour
     public Transform toPlace;
     public GameObject dinodino;
 
+    
+    
+    public AudioSource normal2;
+    public AudioSource dyno_eat;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -40,6 +44,8 @@ public class HollerMeat : MonoBehaviour
             // Debug.LogError(toPlace.position);
             StartCoroutine(Anim());
             dinodino.transform.rotation = toPlace.rotation;
+            StartCoroutine(StartAnim.SoundFade(normal2, -1, 0, 1f));
+            StartCoroutine(StartAnim.SoundFade(dyno_eat, 0, 0.2f, 1f));
 
         }
     }

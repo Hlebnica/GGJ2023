@@ -20,7 +20,9 @@ public class HollerPter : MonoBehaviour
 
     public GameObject meatHoller;
     
-    
+    public AudioSource fire2;
+    public GameObject pter_dead;
+    public AudioSource normal2;
 
 
     IEnumerator FlyAnim()
@@ -56,7 +58,9 @@ public class HollerPter : MonoBehaviour
             Destroy(GetComponent<BoxCollider>());
             meatHoller.SetActive(true);
             StartCoroutine(FlyAnim());
-
+            pter_dead.SetActive(true);
+            StartCoroutine(StartAnim.SoundFade(fire2, -1, 0, 1f));
+            StartCoroutine(StartAnim.SoundFade(normal2, 0, 0.2f, 1f));
         }
     }
 }

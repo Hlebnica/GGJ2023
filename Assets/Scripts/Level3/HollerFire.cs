@@ -14,6 +14,9 @@ public class HollerFire : MonoBehaviour
     public GameObject fire;
 
 
+    public AudioSource m0;
+    public AudioSource fire1;
+
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("ENTER "+other.transform.parent.gameObject.name);
@@ -27,8 +30,11 @@ public class HollerFire : MonoBehaviour
             done = true;
             
             fire.SetActive(true);
+            
+            
 
-
+            StartCoroutine(StartAnim.SoundFade(m0, -1, 0, 1f));
+            StartCoroutine(StartAnim.SoundFade(fire1, 0, 0.2f, 1f));
         }
     }
 }

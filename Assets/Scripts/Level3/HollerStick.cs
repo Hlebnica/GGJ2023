@@ -15,6 +15,8 @@ public class HollerStick : MonoBehaviour
 
     public HollerFire fireHoller;
 
+    public AudioSource fire1;
+    public AudioSource fire2;
 
 
     private void OnTriggerEnter(Collider other)
@@ -29,7 +31,8 @@ public class HollerStick : MonoBehaviour
             done = true;
             fire.SetActive(true);
             
-
+            StartCoroutine(StartAnim.SoundFade(fire1, -1, 0, 1f));
+            StartCoroutine(StartAnim.SoundFade(fire2, 0, 0.2f, 1f));
         }
     }
 }
