@@ -53,7 +53,7 @@ public class StartAnim : MonoBehaviour
 
     IEnumerator TOTALANIM()
     {
-        yield return Anim(0.5f, VcameraStart, VcameraTargetStart, VcameraEnd,
+        yield return Anim(1.5f, VcameraStart, VcameraTargetStart, VcameraEnd,
             VcameraTargetEnd, 2, Ssize, maxSizeEnd);
 
         yield return Anim(0.5f, VcameraEnd,
@@ -73,7 +73,7 @@ public class StartAnim : MonoBehaviour
             VcameraTargetEnd, VcameraStart, VcameraTargetStart, 2, maxSizeEnd,
             Ssize);
 
-        SceneManager.LoadScene("Level1");
+        SceneChanger.instance.ChangeScene("Level1");
     }
 
     IEnumerator Anim(float delay, Vector3 cs, Vector3 cts, Vector3 ce, Vector3 cte, float l, float fs, float fe)

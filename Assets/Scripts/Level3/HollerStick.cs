@@ -21,8 +21,8 @@ public class HollerStick : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("ENTER "+other.transform.parent.gameObject.name);
-        Debug.Log("KEK "+target.gameObject.name);
+        // Debug.Log("ENTER "+other.transform.parent.gameObject.name);
+        // Debug.Log("KEK "+target.gameObject.name);
         if (other.transform.parent.gameObject.name == target.gameObject.name && !done && fireHoller.done)
         {
             

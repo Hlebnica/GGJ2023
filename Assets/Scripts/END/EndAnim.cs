@@ -68,7 +68,7 @@ public class EndAnim : MonoBehaviour
     IEnumerator TOTALANIM()
     {
         
-        yield return Anim(0.5f, VcameraStart, VcameraTargetStart, VcameraEnd,
+        yield return Anim(1.5f, VcameraStart, VcameraTargetStart, VcameraEnd,
             VcameraTargetEnd, 2, Ssize, maxSizeEnd);
         StartCoroutine(StartAnim.SoundFade(A1, -1, 0, 1f));
 
@@ -77,6 +77,7 @@ public class EndAnim : MonoBehaviour
         rot.SetActive(true);
         yield return new WaitForSeconds(0.4f);
         yield return RotateAnim(3);
+        yield return new WaitForSeconds(1f);
         building.isKinematic = false;
         fist.isKinematic = false;
         fist.AddForce((end.position-transform.position)*10, ForceMode.VelocityChange);

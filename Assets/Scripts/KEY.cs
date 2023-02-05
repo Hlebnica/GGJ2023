@@ -9,7 +9,7 @@ public class KEY : MonoBehaviour
     {
         
         if (Input.GetKeyDown(KeyCode.Escape)) Application.Quit();
-        if (Input.GetKeyDown(KeyCode.R)) SceneManager.LoadScene(SceneManager.sceneCount);
+        if (Input.GetKeyDown(KeyCode.R)) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
 }

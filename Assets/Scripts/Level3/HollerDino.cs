@@ -37,7 +37,7 @@ public class HollerDino : MonoBehaviour
     IEnumerator Anim()
     {
         yield return new WaitForSeconds(4);
-        SceneManager.LoadScene("End");
+        SceneChanger.instance.ChangeScene("End");
     }
     
     

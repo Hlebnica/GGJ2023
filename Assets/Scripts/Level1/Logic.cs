@@ -46,10 +46,7 @@ public class Logic : MonoBehaviour
         }
     }
 
-    // private void Start()
-    // {
-    //     StartCoroutine(Anim());
-    // }
+ 
 
     IEnumerator Anim()
     {
@@ -79,7 +76,7 @@ public class Logic : MonoBehaviour
             }
 
             if (Time.time - startTime > 5)
-                SceneManager.LoadScene("Level2");
+                SceneChanger.instance.ChangeScene("Level2");
             yield return null;
         }
     }
