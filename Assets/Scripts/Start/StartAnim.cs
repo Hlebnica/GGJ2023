@@ -32,6 +32,10 @@ public class StartAnim : MonoBehaviour
     public GameObject l1;
     public GameObject l2;
 
+
+    public AudioSource music;
+    public AudioSource build;
+
     private void Start()
     {
         VcameraTargetStart = cameraTargetStart.position;
@@ -39,7 +43,6 @@ public class StartAnim : MonoBehaviour
         VcameraTargetEnd = cameraTargetEnd.position;
         VcameraEnd = cameraEnd.position;
 
-        
 
         _cameraC = Camera.main;
         Ssize = _cameraC.orthographicSize;
@@ -58,13 +61,14 @@ public class StartAnim : MonoBehaviour
             Ssize);
 
         yield return new WaitForSeconds(0.5f);
-        
+        yield return SoundFade(music, -1, 0.1f, 0.5f);
         l1.SetActive(false);
         l2.SetActive(true);
-        
+        yield return SoundFade(build, 0, 0.18f, 0.5f);
+
         yield return Anim(0.5f, VcameraStart, VcameraTargetStart, VcameraEnd,
             VcameraTargetEnd, 2, Ssize, maxSizeEnd);
-        
+
         yield return Anim(0.5f, VcameraEnd,
             VcameraTargetEnd, VcameraStart, VcameraTargetStart, 2, maxSizeEnd,
             Ssize);
@@ -85,5 +89,23 @@ public class StartAnim : MonoBehaviour
             _cameraC.orthographicSize = Mathf.Lerp(fs, fe, dn);
             yield return null;
         }
+    }
+
+    public static IEnumerator SoundFade(AudioSource sound, float a, float b, float l)
+    {
+        float t = 0;
+        if (a < 0) a = sound.volume;
+        if (b < 0) b = sound.volume;
+        do
+        {
+            t += Time.deltaTime;
+            var d = t / l;
+
+
+            sound.volume = Mathf.Lerp(a, b, d);
+            yield return null;
+        } while (t < l);
+
+        sound.volume = b;
     }
 }

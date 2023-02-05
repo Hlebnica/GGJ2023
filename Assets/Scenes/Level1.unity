@@ -217,9 +217,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e52f7c9604e3ebe4795f5feac6d7b645, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -723,9 +723,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 47614070a13e64f4681fb501f2f57115, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2406,9 +2406,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e6d80c9b4a2a40e418642f84cd7ef959, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -3460,6 +3460,10 @@ MonoBehaviour:
   - {fileID: 1313011045}
   arot:
   - {fileID: 560309471}
+  m0: {fileID: 712792228}
+  m1: {fileID: 27720035}
+  m2: {fileID: 1683620073}
+  m3: {fileID: 162600484}
 --- !u!1 &1096008478 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b52ebd925f3de44488b086c0f7fe8c51, type: 3}
@@ -5420,9 +5424,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1d25e0cf060631147aa2e67f3273f92d, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
