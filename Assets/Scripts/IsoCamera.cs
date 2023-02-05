@@ -44,7 +44,7 @@ public class IsoCamera : MonoBehaviour
         rot.eulerAngles += addHorizontal;
         target.transform.rotation = rot;
         _camera.orthographicSize =
-            Mathf.Clamp(_camera.orthographicSize + Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime * -300, 4, 14);
+            Mathf.Clamp(_camera.orthographicSize + Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime * -300, 4, 11.5f);
 
 
         oldMousePos = Input.mousePosition;

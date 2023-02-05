@@ -85,6 +85,8 @@ public class Logic2 : MonoBehaviour
 
             yield return null;
         }
+
+        yield return new WaitForSeconds(2);
         SceneManager.LoadScene("Level3");
     }
 
