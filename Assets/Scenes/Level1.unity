@@ -4402,7 +4402,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: fdc4361fce94b0049969c1bebee0c1e5, type: 3}
       propertyPath: m_TagString
-      value: Clawable
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fdc4361fce94b0049969c1bebee0c1e5, type: 3}

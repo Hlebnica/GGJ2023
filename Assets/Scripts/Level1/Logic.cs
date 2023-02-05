@@ -31,29 +31,38 @@ public class Logic : MonoBehaviour
         }
     }
 
+    // private void Start()
+    // {
+    //     StartCoroutine(Anim());
+    // }
+
     IEnumerator Anim()
     {
         dim.SetActive(true);
         float startTime = Time.time;
 
+        float t=0;
         while (true)
         {
+            t += Time.deltaTime;
+            
 
             foreach (var r in rot)
             {
                 var rr=r.rotation;
-                rr.eulerAngles+= Vector3.right*Time.time * 40;
+                // rr.
+                rr.eulerAngles= Vector3.right*t * 90;
                 r.rotation = rr;
             }
             foreach (var r in arot)
             {
                 var rr=r.rotation;
-                rr.eulerAngles+= Vector3.right*Time.time * -40;
+                rr.eulerAngles= Vector3.right*t * -90;
                 r.rotation = rr;
             }
             
-            if (Time.time - startTime > 5)
-                SceneManager.LoadScene("Level2");
+           if (Time.time - startTime > 5)
+               SceneManager.LoadScene("Level2");
             yield return null;
         }
 
