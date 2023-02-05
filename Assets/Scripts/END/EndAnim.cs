@@ -37,6 +37,14 @@ public class EndAnim : MonoBehaviour
     public Vector3 VtreeTargetEnd;
 
     public Transform end;
+    
+    
+    public AudioSource A1;
+    public GameObject punch;
+    public GameObject rot;
+    public AudioSource A2;
+    
+
 
     private void Start()
     {
@@ -59,17 +67,22 @@ public class EndAnim : MonoBehaviour
 
     IEnumerator TOTALANIM()
     {
+        
         yield return Anim(0.5f, VcameraStart, VcameraTargetStart, VcameraEnd,
             VcameraTargetEnd, 2, Ssize, maxSizeEnd);
+        StartCoroutine(StartAnim.SoundFade(A1, -1, 0, 1f));
 
 
-        yield return new WaitForSeconds(1f);
-
-        yield return RotateAnim(1);
+        yield return new WaitForSeconds(1.6f);
+        rot.SetActive(true);
+        yield return new WaitForSeconds(0.4f);
+        yield return RotateAnim(3);
         building.isKinematic = false;
         fist.isKinematic = false;
         fist.AddForce((end.position-transform.position)*10, ForceMode.VelocityChange);
-
+        punch.SetActive(true);
+        
+        StartCoroutine(StartAnim.SoundFade(A2, 0, 0.1f, 1f));
     }
 
     IEnumerator RotateAnim( float l)
